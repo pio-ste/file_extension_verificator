@@ -5,7 +5,7 @@ public interface IFileService {
 
     String readFile(String path) throws FileNotFoundException;
 
-    void compareMagicNumbers(String fileContent, String extension);
+    String compareMagicNumbers(String fileContent, String extension);
 
     void checkExtension(FileToCheck fileToCheck);
 

@@ -26,21 +26,21 @@ public class FileService implements IFileService{
     }
 
     @Override
-    public void compareMagicNumbers(String fileContent, String extension) {
+    public String compareMagicNumbers(String fileContent, String extension) {
         if (fileContent.startsWith(gif87a) || fileContent.startsWith(gif89a)) {
             if (extension.equals("gif")) {
-                System.out.println("The file extension is true!");
+                return "The file extension is true!";
             } else {
-                System.out.println("Extension is "+ extension +", while actually it's gif");
+                return "Extension is "+ extension +", while actually it's gif";
             }
         } else if (fileContent.startsWith(jpg)) {
             if (extension.equals("jpg")) {
-                System.out.println("The file extension is true!");
+                return "The file extension is true!";
             } else {
-                System.out.println("Extension is "+ extension +", while actually it's jpg");
+                return "Extension is "+ extension +", while actually it's jpg";
             }
         } else {
-            System.out.println("The file extension is not recognized!");
+            return "The file extension is not recognized!";
         }
 
 
@@ -50,7 +50,8 @@ public class FileService implements IFileService{
     public void checkExtension(FileToCheck fileToCheck) {
         try {
             String fileContent = readFile(fileToCheck.getPath());
-            compareMagicNumbers(fileContent, fileToCheck.getExtension());
+            String result = compareMagicNumbers(fileContent, fileToCheck.getExtension());
+            System.out.println(result);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
